@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation'
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'
-import { bgBlue, white } from '../utils/colors'
+import { purple, white } from '../utils/colors'
 import { vietnamRegular } from '../utils/fonts'
 
 import Decks from '../containers/Decks'
@@ -30,10 +30,10 @@ const TabNavigator = createBottomTabNavigator(
       header: null
     },
     tabBarOptions: {
-      activeTintColor: Platform.OS === 'ios' ? bgBlue : white,
+      activeTintColor: Platform.OS === 'ios' ? purple : white,
       style: {
         height: 56,
-        backgroundColor: Platform.OS === 'ios' ? '#FAFAFA' : bgBlue,
+        backgroundColor: Platform.OS === 'ios' ? '#FAFAFA' : purple,
         fontFamily: vietnamRegular,
         shadowColor: 'rgba(0,0,0,0.24)',
         shadowOffset: {
