@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet, Text, View, Image } from 'react-native'
-import { white, lightPurple } from '../utils/colors'
-import { vietnamMedium } from '../utils/fonts'
+import { purple, bgBlueLight } from '../utils/colors'
+import { robotoMedium } from '../utils/fonts'
 
 const QuizHeader = (props) => {
 
@@ -14,9 +15,15 @@ const QuizHeader = (props) => {
         </Text>
       </View>
       <View style={styles.imageContainer}>
+        <Image source={require('../images/question-cards.png')} />
       </View>
     </View>
-  );
+  )
+}
+
+QuizHeader.propTypes = {
+  currentQuestionIndex: PropTypes.number.isRequired,
+  totalQuestions: PropTypes.number.isRequired
 }
 
 const styles = StyleSheet.create({
@@ -28,22 +35,22 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     height: 130,
     borderRadius: 10,
-    backgroundColor: lightPurple
+    backgroundColor: bgBlueLight
   },
   headerTextContainer: {
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: 'column' 
   },
   headerText: {
-    color: white,
-    fontFamily: vietnamMedium,
+    color: purple,
+    fontFamily: robotoMedium,
     fontSize: 32
   },
   countText: {
     marginTop: 24,
     fontSize: 26,
-    fontFamily: vietnamMedium,
-    color: white
+    fontFamily: robotoMedium,
+    color: purple
   },
   imageContainer: {
     flex: 1,

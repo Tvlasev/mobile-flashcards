@@ -10,6 +10,7 @@ import DeckCard from '../components/DeckCard'
 class Decks extends Component {
   render() {
     const { decksArray } = this.props
+
     return (
       <View style={{flex: 1}}>
         <CustomStatusBar />

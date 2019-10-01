@@ -1,16 +1,15 @@
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from 'react-native'
 
-const DECKS_STORAGE_KEY = 'MobileFlashcards:Decks';
+const DECKS_STORAGE_KEY = 'MobileFlashcards:Decks'
 
-export async function fetchAllDecks() {
+export async function fetchAllDecks(){
+  let decksJson = await AsyncStorage.getItem(DECKS_STORAGE_KEY)
 
-  let decksJson = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
-
-  if (decksJson !== null) {
-    return JSON.parse(decksJson);
-  } else {
-    AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(dummyData));
-    return dummyData;
+  if(decksJson !== null){
+    return JSON.parse(decksJson)
+  }else {
+    AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(dummyData))
+    return dummyData
   }
 }
 
@@ -55,5 +54,5 @@ const dummyData = {
       }
     ]
   }
-};
+}
 

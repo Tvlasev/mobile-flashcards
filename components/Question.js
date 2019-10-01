@@ -1,37 +1,35 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import globalStyles from '../utils/globalStyles'
-import { vietnamMedium, vietnamRegular } from '../utils/fonts'
-import { textColor, white } from '../utils/colors'
+import { robotoMedium, robotoRegular } from '../utils/fonts'
+import { textColor, purple } from '../utils/colors'
 
 class Question extends Component {
 
   state = {
     showAnswerArea: false
-  };
+  }
 
   handleShowAnswerPress = () => {
     this.setState({ showAnswerArea: true })
-  };
+  }
 
   handleQuestionAnswered = (answeredCorrectly) => {
-    const { onQuestionAnswered } = this.props;
+    const { onQuestionAnswered } = this.props
 
     this.setState({ showAnswerArea: false })
 
-    onQuestionAnswered(answeredCorrectly);
-  };
+    onQuestionAnswered(answeredCorrectly)
+  }
 
   render() {
-
-    const { questionObject } = this.props;
+    const { questionObject } = this.props
 
     return (
       <View>
-
         <Text style={globalStyles.title}>Question</Text>
         <Text style={styles.largeText}>{ questionObject.question }</Text>
-
         {!this.state.showAnswerArea && (
           <View>
             <TouchableOpacity
@@ -41,16 +39,12 @@ class Question extends Component {
             </TouchableOpacity>
           </View>
         )}
-
         {this.state.showAnswerArea && (
           <View>
             <Text style={styles.heading}>Answer</Text>
             <Text style={styles.largeText}>{ questionObject.answer }</Text>
-
             <Text style={styles.heading}>What is your result?</Text>
-
             <View style={styles.buttonsContainer}>
-
               <View style={{ flex: 1 }}>
                 <TouchableOpacity
                   onPress={() => this.handleQuestionAnswered(true)}
@@ -58,7 +52,6 @@ class Question extends Component {
                   <Text style={styles.btnSuccessText}>Correct</Text>
                 </TouchableOpacity>
               </View>
-
               <View style={{ flex: 1 }}>
                 <TouchableOpacity
                   onPress={() => this.handleQuestionAnswered(false)}
@@ -69,11 +62,14 @@ class Question extends Component {
             </View>
           </View>
         )}
-
       </View>
     )
-
   }
+}
+
+Question.propTypes = {
+  questionObject: PropTypes.object.isRequired,
+  onQuestionAnswered: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
@@ -81,20 +77,20 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 20,
     fontSize: 20,
-    fontFamily: vietnamMedium,
+    fontFamily: robotoMedium,
     color: textColor
   },
   smallText: {
     marginTop: 8,
     marginBottom: 20,
     fontSize: 16,
-    fontFamily: vietnamRegular,
+    fontFamily: robotoRegular,
     color: textColor
   },
   heading: {
     marginTop: 8,
     fontSize: 32,
-    fontFamily: vietnamMedium,
+    fontFamily: robotoMedium,
     color: textColor
   },
   btnSuccess: {
@@ -114,15 +110,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#DC3545'
   },
   btnSuccessText: {
-    color: white,
+    color: purple,
     fontSize: 14,
-    fontFamily: vietnamMedium,
+    fontFamily: robotoMedium,
     textTransform: 'uppercase'
   },
   btnErrorText: {
-    color: white,
+    color: purple,
     fontSize: 14,
-    fontFamily: vietnamMedium,
+    fontFamily: robotoMedium,
     textTransform: 'uppercase'
   },
   buttonsContainer: {

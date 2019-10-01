@@ -15,10 +15,9 @@ class Quiz extends Component {
     currentQuestionIndex: 0,
     answeredCorrectly: 0,
     quizComplete: false
-  };
+  }
 
   handleQuestionAnswered = async (answeredCorrectly) => {
-
     if (answeredCorrectly) {
       this.setState({answeredCorrectly: this.state.answeredCorrectly + 1})
     }
@@ -26,7 +25,6 @@ class Quiz extends Component {
     const isQuizComplete = this.state.currentQuestionIndex === this.props.questions.length - 1
 
     if (isQuizComplete) {
-
       this.setState({quizComplete: true})
 
       await clearLocalNotification()
@@ -79,7 +77,7 @@ function mapStateToProps(decks, { navigation }) {
   return {
     deckId,
     questions: decks[deckId].questions
-  };
+  }
 }
 
 export default connect(mapStateToProps)(Quiz)

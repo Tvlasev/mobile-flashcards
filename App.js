@@ -5,37 +5,33 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import middleware from './middleware'
 import { receiveDecks } from './actions/index'
-import { fetchAllDecks } from './utils/API'
-import { setLocalNotification } from './utils/notificationHelper'
-import NavigationService from './navigation/navigationService'
-import StackNavigation from './navigation/StackNavigation'
 import * as Font from 'expo-font'
-import { vietnamMedium, vietnamRegular } from './utils/fonts'
-
-store = createStore(reducer, middleware)
+import { robotoMedium, robotoRegular } from './utils/fonts'
+import NavigationService from './navigation/navigationService'
+import { fetchAllDecks } from './utils/api'
+import { setLocalNotification } from './utils/notificationHelper'
+import StackNavigation from './navigation/StackNavigation'
 
 export default class App extends Component {
+  store = createStore(reducer, middleware)
 
   state = {
-    prerequisitesLoaded: false
-  };
-  
+    prerequisitesLoaded: false 
+  }
+
   async componentDidMount() {
-
     await setLocalNotification()
-
     const loadDecksPromise = fetchAllDecks()
 
     const loadFontsPromise = Font.loadAsync({
-      [vietnamRegular]: require('./assets/BeVietnam-Regular.ttf'),
-      [vietnamMedium]: require('./assets/BeVietnam-Medium.ttf')
-    });
+      [robotoRegular]: require('./assets/fonts/Roboto-Regular.ttf'),
+      [robotoMedium]: require('./assets/fonts/Roboto-Medium.ttf')
+    })
 
     Promise.all([loadDecksPromise, loadFontsPromise])
       .then(values => {
-        const decks = values[0];
+        const decks = values[0]
         this.store.dispatch(receiveDecks(decks))
-      .catch(e => console.log(e))
 
         this.setState({
           prerequisitesLoaded: true
@@ -44,13 +40,12 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(store)
     return (
-      <Provider store={store}>
+      <Provider store={this.store}>
         <View style={styles.appContainer}>
           {this.state.prerequisitesLoaded && (
             <StackNavigation ref={navigatorRef => {
-              NavigationService.setTopLevelNavigator(navigatorRef);
+              NavigationService.setTopLevelNavigator(navigatorRef)
             }} />
           )}
         </View>
@@ -65,4 +60,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   }
 })
-

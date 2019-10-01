@@ -4,23 +4,25 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import globalStyles from '../utils/globalStyles'
 import NavigationService from '../navigation/navigationService'
 
-import DeckCard from '../components/DeckCard';
+import DeckCard from '../components/DeckCard'
 
 class Deck extends Component {
+
   state = {
     showNoQuestionsError: false
-  };
+  }
+
   handleStartQuiz = () => {
-    const { deck, questionsCount } = this.props;
+    const { deck, questionsCount } = this.props
 
     if (questionsCount === 0){
-      this.setState({ showNoQuestionsError: true });
+      this.setState({ showNoQuestionsError: true })
     } else {
       NavigationService.navigate('Quiz', {
         deckId: deck.id
-      });
+      })
     }
-  };
+  }
 
   handleAddCard = () => {
     const { deck } = this.props
@@ -28,8 +30,8 @@ class Deck extends Component {
     this.setState({ showNoQuestionsError: false })
     NavigationService.navigate('AddCard', {
       deckId: deck.id
-    });
-  };
+    })
+  }
 
   render() {
     const { deck } = this.props
@@ -58,7 +60,7 @@ class Deck extends Component {
 }
 
 function mapStateToProps(decks, { navigation }) {
-  const { deckId } = navigation.state.params;
+  const { deckId } = navigation.state.params
 
   return {
     deckId,

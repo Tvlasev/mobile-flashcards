@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
-import { green, white } from '../utils/colors'
-import { vietnamMedium, vietnamRegular } from '../utils/fonts'
+import { bgGreen, purple } from '../utils/colors'
+import { robotoMedium, robotoRegular } from '../utils/fonts'
 import NavigationService from '../navigation/navigationService'
 
 class DeckCard extends Component {
 
   state = {
     scaleValue: new Animated.Value(1)
-  };
+  }
 
   handleDeckPress = () => {
     const { deck } = this.props
@@ -27,34 +28,27 @@ class DeckCard extends Component {
   }
 
   render() {
-
     const { deck, allowNavigation } = this.props
     const { scaleValue } = this.state
     const cardCount = deck.questions.length
 
     return (
-
       <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
-
         <TouchableOpacity
           disabled={!allowNavigation}
           onPress={this.handleDeckPress}
           style={styles.container}>
-
           <View style={styles.contentContainer}>
             <Text style={styles.title}>{deck.title}</Text>
             <Text style={styles.createdText}>Created: {deck.created}</Text>
-
             <View style={styles.countContainer}>
               <Text style={styles.countText}>{cardCount}</Text>
-
               {cardCount === 1
                 ? <Text style={styles.countLabel}>flashcard</Text>
                 : <Text style={styles.countLabel}>flashcards</Text>
               }
             </View>
           </View>
-
           {allowNavigation && (
             <FontAwesome
               name="chevron-right"
@@ -62,11 +56,15 @@ class DeckCard extends Component {
               size={18}
             />
           )}
-
         </TouchableOpacity>
       </Animated.View>
-    );
+    )
   }
+}
+
+DeckCard.propTypes = {
+  deck: PropTypes.object.isRequired,
+  allowNavigation: PropTypes.bool
 }
 
 const styles = StyleSheet.create({
@@ -77,20 +75,20 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     padding: 16,
     borderRadius: 10,
-    backgroundColor: green
+    backgroundColor: bgGreen
   },
   contentContainer: {
     flex: 1
   },
   title: {
     fontSize: 22,
-    fontFamily: vietnamMedium,
-    color: white
+    fontFamily: robotoMedium,
+    color: purple
   },
   createdText: {
     fontSize: 14,
-    fontFamily: vietnamRegular,
-    color: white
+    fontFamily: robotoRegular,
+    color: purple
   },
   countContainer: {
     flexDirection: 'row',
@@ -99,18 +97,18 @@ const styles = StyleSheet.create({
   },
   countText: {
     fontSize: 28,
-    fontFamily: vietnamMedium,
-    color: white
+    fontFamily: robotoMedium,
+    color: purple
   },
   countLabel: {
     marginLeft: 5,
     marginBottom: 2,
     fontSize: 22,
-    fontFamily: vietnamMedium,
+    fontFamily: robotoMedium,
     color: '#ffffffcc'
   },
   rightArrow: {
-    color: white
+    color: purple
   }
 })
 

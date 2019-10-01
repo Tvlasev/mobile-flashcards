@@ -1,10 +1,9 @@
 import React from 'react'
 import { Platform } from 'react-native'
-import { createBottomTabNavigator } from 'react-navigation-tabs'
-import { createAppContainer } from 'react-navigation'
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation'
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'
-import { purple, white } from '../utils/colors'
-import { vietnamRegular } from '../utils/fonts'
+import { bgBlue, purple } from '../utils/colors'
+import { robotoRegular } from '../utils/fonts'
 
 import Decks from '../containers/Decks'
 import AddDeck from '../containers/AddDeck'
@@ -31,11 +30,11 @@ const TabNavigator = createBottomTabNavigator(
       header: null
     },
     tabBarOptions: {
-      activeTintColor: Platform.OS === 'ios' ? purple : white,
+      activeTintColor: Platform.OS === 'ios' ? bgBlue : purple,
       style: {
         height: 56,
-        backgroundColor: Platform.OS === 'ios' ? '#FAFAFA' : purple,
-        fontFamily: vietnamRegular,
+        backgroundColor: Platform.OS === 'ios' ? '#FAFAFA' : bgBlue,
+        fontFamily: robotoRegular,
         shadowColor: 'rgba(0,0,0,0.24)',
         shadowOffset: {
           width: 0,
@@ -48,7 +47,7 @@ const TabNavigator = createBottomTabNavigator(
         fontSize: 13
       }
     }
-  });
+  })
 
 const TabNavigation = createAppContainer(TabNavigator)
 

@@ -1,6 +1,4 @@
-import React from 'react'
-import { createAppContainer } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
+import { createStackNavigator, createAppContainer } from 'react-navigation'
 
 import TabNavigation from './TabNavigation'
 import Decks from '../containers/Decks'
@@ -31,8 +29,10 @@ const StackNavigator = createStackNavigator({
   Quiz: {
     screen: Quiz
   }
-});
+})
 
 const StackNavigation = createAppContainer(StackNavigator)
 
 export default StackNavigation
+
+

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
-import { purple, textColor, textRed, white } from './colors'
-import { vietnamMedium, vietnamRegular } from './fonts'
+import { bgBlue, textColor, textRed, purple } from './colors'
+import { robotoMedium, robotoRegular } from './fonts'
 
 const globalStyles = StyleSheet.create({
   viewContainer: {
@@ -10,7 +10,7 @@ const globalStyles = StyleSheet.create({
   title: {
     marginTop: 16,
     fontSize: 40,
-    fontFamily: vietnamMedium,
+    fontFamily: robotoMedium,
     color: textColor
   },
   btnPrimary: {
@@ -19,27 +19,27 @@ const globalStyles = StyleSheet.create({
     marginTop: 32,
     height: 50,
     borderRadius: 10,
-    backgroundColor: purple
+    backgroundColor: bgBlue
   },
   btnSecondary: {
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 32,
     height: 50,
-    borderColor: purple,
+    borderColor: bgBlue,
     borderWidth: 1,
     borderRadius: 10
   },
   btnPrimaryText: {
-    color: white,
+    color: purple,
     fontSize: 14,
-    fontFamily: vietnamMedium,
+    fontFamily: robotoMedium,
     textTransform: 'uppercase'
   },
   btnSecondaryText: {
-    color: purple,
-    fontSize: 12,
-    fontFamily: vietnamMedium,
+    color: bgBlue,
+    fontSize: 14,
+    fontFamily: robotoMedium,
     textTransform: 'uppercase'
   },
   textInput: {
@@ -50,15 +50,15 @@ const globalStyles = StyleSheet.create({
     paddingLeft: 12,
     paddingRight: 12,
     fontSize: 16,
-    fontFamily: vietnamRegular,
+    fontFamily: robotoRegular
   },
   inputErrorText: {
     marginTop: 4,
     marginBottom: 4,
     color: textRed,
     fontSize: 14,
-    fontFamily: vietnamMedium,
+    fontFamily: robotoMedium,
   }
-});
+})
 
-export default globalStyles;
+export default globalStyles

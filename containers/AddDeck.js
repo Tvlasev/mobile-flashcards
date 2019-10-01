@@ -3,16 +3,18 @@ import { connect } from 'react-redux'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import globalStyles from '../utils/globalStyles'
 import { textColor } from '../utils/colors'
-import { vietnamMedium } from '../utils/fonts'
+import { robotoMedium } from '../utils/fonts'
 import CustomStatusBar from '../components/CustomStatusBar'
 import { addDeck } from '../actions'
 
 class AddDeck extends Component {
+
   state = {
     title: '',
     showRequiredInputError: false,
     showUniqueNameError: false
   }
+
   resetState = () => {
     this.setState({
       title: '',
@@ -20,13 +22,14 @@ class AddDeck extends Component {
       showUniqueNameError: false
     })
   }
+
   onSubmit = () => {
     const { decks, addDeck, goToDecks } = this.props
     const { title } = this.state
     const titleNoWhitespace = title.replace(/\s/g, '')
 
     if (!titleNoWhitespace.length) {
-      this.setState({ showRequiredInputError: true, showUniqueNameError: false });
+      this.setState({ showRequiredInputError: true, showUniqueNameError: false })
       return
     }
 
@@ -37,11 +40,12 @@ class AddDeck extends Component {
 
     if (titleAlreadyUsed) {
       this.setState({ showRequiredInputError: false, showUniqueNameError: true })
-      return;
+      return
     }
 
     addDeck(title)
     goToDecks()
+
     this.resetState()
   }
 
@@ -58,12 +62,12 @@ class AddDeck extends Component {
           <Text style={styles.tagline}>Create a new deck of flashcards</Text>
           <Text style={styles.label}>Title</Text>
           <TextInput value={this.state.title} onChangeText={this.onTitleChange} style={globalStyles.textInput} />
-          {this.state.showRequiredInputError && (
-            <Text style={globalStyles.inputErrorText}>Please enter a title</Text>
-          )}
-          {this.state.showUniqueNameError && (
-            <Text style={globalStyles.inputErrorText}>This title has already been used</Text>
-          )}
+            {this.state.showRequiredInputError && (
+              <Text style={globalStyles.inputErrorText}>Please enter a title</Text>
+            )}
+            {this.state.showUniqueNameError && (
+              <Text style={globalStyles.inputErrorText}>This title has already been used</Text>
+            )}
           <TouchableOpacity onPress={this.onSubmit} style={globalStyles.btnPrimary}>
             <Text style={globalStyles.btnPrimaryText}>Create Deck</Text>
           </TouchableOpacity>
@@ -85,14 +89,13 @@ function mapDispatchToProps(dispatch, { navigation }) {
       const deckId = title.replace(/\s/g, '')
       const timestamp = Math.round(new Date() / 1000)
       const dateString = new Date().toISOString().split('T')[0]
-
       dispatch(addDeck({
         id: deckId,
         title: title,
         timestamp: timestamp,
         created: dateString,
         questions: []
-      }));
+      }))
     },
     goToDecks: () => navigation.navigate('Decks')
   }
@@ -109,6 +112,6 @@ const styles = StyleSheet.create({
     marginTop: 32,
     marginBottom: 4,
     fontSize: 16,
-    fontFamily: vietnamMedium
+    fontFamily: robotoMedium
   }
 })

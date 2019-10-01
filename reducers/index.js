@@ -6,12 +6,12 @@ function decks(state = {}, action) {
       return {
         ...state,
         ...action.decks
-      };
+      }
     case types.ADD_DECK:
       return {
         ...state,
         [action.deck.id]: action.deck
-      };
+      }
     case types.ADD_CARD:
       return {
         ...state,
@@ -22,10 +22,10 @@ function decks(state = {}, action) {
             answer: action.questionDetails.answer
           })
         }
-      };
+      }
     default:
-      return state;
+      return state
   }
 }
 
-export default decks;
+export default decks

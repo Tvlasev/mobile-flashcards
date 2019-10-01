@@ -1,2 +1,2 @@
-export const vietnamRegular = 'vietnam-regular'
-export const vietnamMedium = 'vietnam-medium'
+export const robotoRegular = 'roboto-regular'
+export const robotoMedium = 'roboto-medium'

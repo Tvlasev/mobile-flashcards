@@ -7,7 +7,7 @@ const CustomStatusBar = ({...props}) => {
     <View style={{height: Constants.statusBarHeight}}>
       <StatusBar translucent {...props} />
     </View>
-  );
+  )
 }
 
 export default CustomStatusBar
