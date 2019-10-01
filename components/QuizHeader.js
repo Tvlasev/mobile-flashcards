@@ -7,18 +7,14 @@ const QuizHeader = (props) => {
 
   return (
     <View style={styles.headerPanel}>
-
       <View style={styles.headerTextContainer}>
         <Text style={styles.headerText}>Quiz Time!</Text>
         <Text style={styles.countText}>
           { props.currentQuestionIndex + 1 } / { props.totalQuestions }
         </Text>
       </View>
-
       <View style={styles.imageContainer}>
-        <Image source={require('../images/cards-quiz.png')} />
       </View>
-
     </View>
   );
 }

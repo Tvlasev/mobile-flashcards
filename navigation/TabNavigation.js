@@ -1,6 +1,7 @@
 import React from 'react'
 import { Platform } from 'react-native'
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
+import { createAppContainer } from 'react-navigation'
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { purple, white } from '../utils/colors'
 import { vietnamRegular } from '../utils/fonts'

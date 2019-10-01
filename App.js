@@ -8,6 +8,7 @@ import { receiveDecks } from './actions/index'
 import { fetchAllDecks } from './utils/API'
 import { setLocalNotification } from './utils/notificationHelper'
 import NavigationService from './navigation/navigationService'
+import StackNavigation from './navigation/StackNavigation'
 import * as Font from 'expo-font'
 import { vietnamMedium, vietnamRegular } from './utils/fonts'
 
@@ -34,7 +35,7 @@ export default class App extends Component {
       .then(values => {
         const decks = values[0];
         this.store.dispatch(receiveDecks(decks))
-          .catch(e => console.log(e))
+      .catch(e => console.log(e))
 
         this.setState({
           prerequisitesLoaded: true
@@ -63,5 +64,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff'
   }
-});
+})
 
