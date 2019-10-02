@@ -6,6 +6,7 @@ import { textColor } from '../utils/colors'
 import { robotoMedium } from '../utils/fonts'
 import CustomStatusBar from '../components/CustomStatusBar'
 import { addDeck } from '../actions'
+import NavigationService from '../navigation/navigationService'
 
 class AddDeck extends Component {
 
@@ -24,7 +25,7 @@ class AddDeck extends Component {
   }
 
   onSubmit = () => {
-    const { decks, addDeck, goToDecks } = this.props
+    const { decks, addDeck } = this.props
     const { title } = this.state
     const titleNoWhitespace = title.replace(/\s/g, '')
 
@@ -44,7 +45,9 @@ class AddDeck extends Component {
     }
 
     addDeck(title)
-    goToDecks()
+    NavigationService.navigate('Deck', {
+      deckId: title.replace(/\s/g, '')
+    })
 
     this.resetState()
   }
@@ -96,8 +99,7 @@ function mapDispatchToProps(dispatch, { navigation }) {
         created: dateString,
         questions: []
       }))
-    },
-    goToDecks: () => navigation.navigate('Decks')
+    }
   }
 }
 
